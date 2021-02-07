@@ -1,6 +1,6 @@
-This project contains a Vector class which can be used to create a 2D or 3D vector, and use different mathematical functions on the vectors
+# This project contains a Vector class which can be used to create a 2D or 3D vector, and use different mathematical functions on the vectors
 
-Currently implemented:
+### Currently implemented:
 - Addition
 - Subtraction
 - Multiplication with a scalar
@@ -11,7 +11,7 @@ Currently implemented:
 
 In addition, the +, -, *, and / operators have been overloaded to work as expected 
 the < operator was overloaded to return the angle between two Vectors 
-	(vec1<vec2 returns the angle between vec1 and vec2)
+- (vec1<vec2 returns the angle between vec1 and vec2)
 
 There is no error handling implemented aside from the Dot function, which checks that both inputs are 3D vectors
 
