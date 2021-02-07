@@ -2,6 +2,8 @@
 #ifndef __VECTOR__
 #define __VECTOR__
 
+#include <iostream>
+
 class Vector {
 	public:
 

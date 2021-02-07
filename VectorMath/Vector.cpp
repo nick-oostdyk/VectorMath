@@ -1,6 +1,5 @@
 #include "Vector.h"
 
-#include <iostream>
 #include <cmath>
 
 // Constructors
@@ -86,7 +85,12 @@ Vector Vector::Normalized() const {
 }
 
 float Vector::angleBetween(const Vector &_other) const {
-	return std::acos(this->Dot(_other) / this->Mag() * _other.Mag());
+	float pi = std::atan(1) * 4;
+
+	auto dot = this->Dot(_other);
+	auto mag = this->Mag() * _other.Mag();
+
+	return std::acos(dot / mag) * 180.0f / pi;
 }
 
 Vector operator+(const Vector &lhs, const Vector &rhs) {
