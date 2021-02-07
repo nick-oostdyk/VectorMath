@@ -56,7 +56,7 @@ float Vector::Dot(const Vector &_other) const {
 Vector Vector::Cross(const Vector &_other) const {
 	Vector returnVec = Vector(0, 0, 0);
 
-	if (this->is_2d || _other.is_2d) { 
+	if (this->is_2d || _other.is_2d) {
 		std::cerr << "Cross multiplication only works on 3d vectors." << std::endl;
 		return returnVec;
 	}
@@ -89,7 +89,7 @@ float Vector::angleBetween(const Vector &_other) const {
 	return std::acos(this->Dot(_other) / this->Mag() * _other.Mag());
 }
 
-Vector operator+(const Vector &lhs, const Vector &rhs) { 
+Vector operator+(const Vector &lhs, const Vector &rhs) {
 	return lhs.Add(rhs);
 }
 
@@ -105,6 +105,16 @@ Vector operator/(const Vector &lhs, const float &rhs) {
 	return lhs.Divide(rhs);
 }
 
-float operator<(const Vector &lhs, const Vector &rhs) { 
+float operator<(const Vector &lhs, const Vector &rhs) {
 	return lhs.angleBetween(rhs);
+}
+
+std::ostream &operator<<(std::ostream &os, const Vector &_vec) {
+
+	os << "x: " << _vec.x << std::endl;
+	os << "y: " << _vec.y << std::endl;
+	if (!_vec.is_2d)
+		os << "z: " << _vec.z << std::endl;
+
+	return os;
 }

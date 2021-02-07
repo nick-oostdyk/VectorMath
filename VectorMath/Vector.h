@@ -3,13 +3,10 @@
 #define __VECTOR__
 
 class Vector {
-
-	private:
-	int x, y, z;
-
-	bool is_2d;
-
 	public:
+
+	int x, y, z;
+	bool is_2d;
 	
 	Vector();
 	Vector(int x, int y);
@@ -34,5 +31,6 @@ Vector operator-(const Vector &lhs, const Vector &rhs);
 Vector operator*(const Vector &lhs, const float &rhs);
 Vector operator/(const Vector &lhs, const float &rhs);
 float operator<(const Vector &lhs, const Vector &rhs);
+std::ostream &operator<<(std::ostream &os, const Vector &_vec);
 
 #endif
