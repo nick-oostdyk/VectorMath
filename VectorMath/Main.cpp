@@ -3,9 +3,9 @@
 
 int main() { 
 
-	Vector a(1, 5), b(-1, 10);
+	Vector a(10, 10, 10), b(1, 2, 3);
 
-	std::cout << a.angleBetween(b) << std::endl;
+	std::cout << a - b << std::endl;
 
 	return 0;
 }

@@ -47,9 +47,14 @@ Vector Vector::Divide(const float _val) const {
 }
 
 float Vector::Dot(const Vector &_other) const {
-	return this->is_2d
-		? this->x * _other.x + this->y * _other.y
-		: this->x * _other.x + this->y * _other.y + this->x * _other.x;
+	float val = 0;
+
+	val += this->x * _other.x;
+	val += this->y * _other.y;
+	if (!this->is_2d)
+		val += this->z * _other.z;
+
+	return val;
 }
 
 Vector Vector::Cross(const Vector &_other) const {
@@ -68,9 +73,13 @@ Vector Vector::Cross(const Vector &_other) const {
 }
 
 float Vector::Mag() const {
-	return this->is_2d
-		? std::sqrt(std::pow(x, 2) + std::pow(y, 2))
-		: std::sqrt(std::pow(x, 2) + std::pow(y, 2) + std::pow(z, 2));
+	float val = 0;
+
+	val += std::pow(x, 2);
+	val += std::pow(y, 2);
+	if (!this->is_2d) val += std::pow(z, 2);
+
+	return std::sqrt(val);
 }
 
 Vector Vector::Normalized() const {
