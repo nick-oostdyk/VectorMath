@@ -128,11 +128,13 @@ Vector Vector::PolarToCartesian() const {
 
 	if (is_2d) { 
 
+		float pi = std::atan(1) * 4;
+
 		float r = this->x;
 		float theta = this->y;
 
-		float x = r * std::cos(theta);
-		float y = r * std::sin(theta);
+		float x = r * std::cos(theta * pi/180);
+		float y = r * std::sin(theta * pi/180);
 
 		return Vector(x, y);
 
