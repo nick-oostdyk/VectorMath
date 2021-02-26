@@ -29,6 +29,9 @@ class Vector {
 
 	Vector CartesianToPolar() const;
 	Vector PolarToCartesian() const;
+
+	Vector CartesianToSpherical() const;
+	Vector SphericalToCartesian() const;
 };
 
 Vector operator+(const Vector &lhs, const Vector &rhs);

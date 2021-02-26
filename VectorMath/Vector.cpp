@@ -111,10 +111,8 @@ Vector Vector::CartesianToPolar() const {
 
 		if (x == 0)			// x = 0
 			theta = y == 0 ? 0 : y > 0 ? 90 : -90 ; 
-
 		else if (x > 0)		// x > 0
 			theta = std::atan(y/x);
-		
 		else				// x < 0
 			theta = std::atan(y / x) + (y >= 0 ? 180 : -180);
 
@@ -139,10 +137,54 @@ Vector Vector::PolarToCartesian() const {
 		return Vector(x, y);
 
 	} else
-		std::cout << "Use SphericalToPolar for 3D vectors\n";
+		std::cout << "Use SphericalToCartesian for 3D vectors\n";
 
 	return Vector(-10000, -10000);
 }
+
+Vector Vector::CartesianToSpherical() const {
+	
+	if (!is_2d) { 
+	
+		float rho = Mag(), theta, phi;
+
+		if (x == 0)			// x = 0
+			theta = y == 0 ? 0 : y > 0 ? 90 : -90;
+		else if (x > 0)		// x > 0
+			theta = std::atan(y / x);
+		else				// x < 0
+			theta = std::atan(y / x) + (y >= 0 ? 180 : -180);
+
+		phi = Vector(x, y).Mag() / z;
+
+		return Vector(rho, theta, phi);
+
+	} else
+		std::cout << "Use CartesianToPolar for 2D vectors\n";
+
+	return Vector(-10000, -10000, -10000);
+}
+
+Vector Vector::SphericalToCartesian() const {
+
+	if (!is_2d) {
+
+		float rho	= this->x;
+		float theta	= this->y;
+		float phi	= this->z;
+
+		float x = rho * std::sin(phi) * std::cos(theta);
+		float y = rho * std::sin(phi) * std::sin(theta);
+		float z = rho * std::cos(phi);
+
+		return Vector(x, y, z);
+
+	} else
+		std::cout << "Use PolarToCartesian for 2D vectors\n";
+
+	return Vector(-10000, -10000, -10000);
+}
+
 
 Vector operator+(const Vector &lhs, const Vector &rhs) {
 	return lhs.Add(rhs);
