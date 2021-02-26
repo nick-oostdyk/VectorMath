@@ -26,6 +26,9 @@ class Vector {
 
 	float Mag() const;
 	Vector Normalized() const;
+
+	Vector CartesianToPolar() const;
+	Vector PolarToCartesian() const;
 };
 
 Vector operator+(const Vector &lhs, const Vector &rhs);
