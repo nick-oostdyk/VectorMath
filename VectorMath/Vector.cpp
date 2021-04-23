@@ -6,10 +6,10 @@
 Vector::Vector()
 	: x(0), y(0), z(0), is_2d(0) { }
 
-Vector::Vector(int _x, int _y)
+Vector::Vector(float _x, float _y)
 	: x(_x), y(_y), z(0), is_2d(1) { }
 
-Vector::Vector(int _x, int _y, int _z)
+Vector::Vector(float _x, float _y, float _z)
 	: x(_x), y(_y), z(_z), is_2d(0) { }
 
 Vector::Vector(const Vector &_other)
@@ -102,17 +102,17 @@ float Vector::angleBetween(const Vector &_other) const {
 	return std::acos(dot / mag) * 180.0f / pi;
 }
 
-Vector Vector::CartesianToPolar() const { 
+Vector Vector::CartesianToPolar() const {
 
-	if (is_2d) { 
-		
+	if (is_2d) {
+
 		auto r = Mag();
 		float theta;
 
 		if (x == 0)			// x = 0
-			theta = y == 0 ? 0 : y > 0 ? 90 : -90 ; 
+			theta = y == 0 ? 0 : y > 0 ? 90 : -90;
 		else if (x > 0)		// x > 0
-			theta = std::atan(y/x);
+			theta = std::atan(y / x);
 		else				// x < 0
 			theta = std::atan(y / x) + (y >= 0 ? 180 : -180);
 
@@ -124,17 +124,17 @@ Vector Vector::CartesianToPolar() const {
 	return Vector(-10000, -10000);
 }
 
-Vector Vector::PolarToCartesian() const { 
+Vector Vector::PolarToCartesian() const {
 
-	if (is_2d) { 
+	if (is_2d) {
 
 		float pi = std::atan(1) * 4;
 
 		float r = this->x;
 		float theta = this->y;
 
-		float x = r * std::cos(theta * pi/180);
-		float y = r * std::sin(theta * pi/180);
+		float x = r * std::cos(theta * pi / 180);
+		float y = r * std::sin(theta * pi / 180);
 
 		return Vector(x, y);
 
@@ -145,9 +145,9 @@ Vector Vector::PolarToCartesian() const {
 }
 
 Vector Vector::CartesianToSpherical() const {
-	
-	if (!is_2d) { 
-	
+
+	if (!is_2d) {
+
 		float rho = Mag(), theta, phi;
 
 		if (x == 0)			// x = 0
@@ -171,9 +171,9 @@ Vector Vector::SphericalToCartesian() const {
 
 	if (!is_2d) {
 
-		float rho	= this->x;
-		float theta	= this->y;
-		float phi	= this->z;
+		float rho = this->x;
+		float theta = this->y;
+		float phi = this->z;
 
 		float x = rho * std::sin(phi) * std::cos(theta);
 		float y = rho * std::sin(phi) * std::sin(theta);

@@ -7,12 +7,12 @@
 class Vector {
 	public:
 
-	int x, y, z;
+	float x, y, z;
 	bool is_2d;
 	
 	Vector();
-	Vector(int x, int y);
-	Vector(int x, int y, int z);
+	Vector(float x, float y);
+	Vector(float x, float y, float z);
 	Vector(const Vector& _other);
 
 	Vector Add(const Vector &_other) const;
